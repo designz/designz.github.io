@@ -5,18 +5,18 @@
   
   <title>jQuery deferred对象 | RME</title>
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="在高于1.5.0的jQuery版本$.ajax()返回的是12javascriptdone(function(){}) //成功fail(function(){}) //失败reject() //改变deferred状态为失败resolve() //改变deferred状态为成功
-1234其中done和fail是链式的，可以同时给目标对象加上多个done或者resolve。执行顺序为添加顺序##">
+  <meta name="description" content="在高于1.5.0的jQuery版本$.ajax()返回的是 deferred 对象， deferred 有以下几个主要的方法。
+1234done(function(){}) //成功fail(function(){}) //失败reject() //改变deferred状态为失败resolve() //改变deferred状态为成功其中done和fail是链式的，可以同时给目标对象加上多个done">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery deferred对象">
 <meta property="og:url" content="http://rolledmyeyes.com/2014/07/31/jQuery-deferred对象/">
 <meta property="og:site_name" content="RME">
-<meta property="og:description" content="在高于1.5.0的jQuery版本$.ajax()返回的是12javascriptdone(function(){}) //成功fail(function(){}) //失败reject() //改变deferred状态为失败resolve() //改变deferred状态为成功
-1234其中done和fail是链式的，可以同时给目标对象加上多个done或者resolve。执行顺序为添加顺序##">
+<meta property="og:description" content="在高于1.5.0的jQuery版本$.ajax()返回的是 deferred 对象， deferred 有以下几个主要的方法。
+1234done(function(){}) //成功fail(function(){}) //失败reject() //改变deferred状态为失败resolve() //改变deferred状态为成功其中done和fail是链式的，可以同时给目标对象加上多个done">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery deferred对象">
-<meta name="twitter:description" content="在高于1.5.0的jQuery版本$.ajax()返回的是12javascriptdone(function(){}) //成功fail(function(){}) //失败reject() //改变deferred状态为失败resolve() //改变deferred状态为成功
-1234其中done和fail是链式的，可以同时给目标对象加上多个done或者resolve。执行顺序为添加顺序##">
+<meta name="twitter:description" content="在高于1.5.0的jQuery版本$.ajax()返回的是 deferred 对象， deferred 有以下几个主要的方法。
+1234done(function(){}) //成功fail(function(){}) //失败reject() //改变deferred状态为失败resolve() //改变deferred状态为成功其中done和fail是链式的，可以同时给目标对象加上多个done">
 
   
     <link rel="alternative" href="/atom.xml" title="RME" type="application/atom+xml">
@@ -74,10 +74,15 @@
 	</header>
 	<div class="entry-content">
 		
-    	<p>在高于1.5.0的jQuery版本$.ajax()返回的是<figure class="highlight deferred````对象，````deferred````有以下几个主要的方法。"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>javascript<br>done(function(){}) //成功<br>fail(function(){}) //失败<br>reject() //改变deferred状态为失败<br>resolve() //改变deferred状态为成功</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">其中<span class="keyword">done</span>和fail是链式的，可以同时给目标对象加上多个<span class="keyword">done</span>或者resolve。执行顺序为添加顺序</div><div class="line"></div><div class="line">## $.<span class="keyword">when</span>()</div><div class="line">当<span class="keyword">when</span>里面的deferred对象都返回成功状态时才进行接下来的动作。</div></pre></td></tr></table></figure>javascript<br>$.when(deferredObj1,defrredObj2).done(…).fail()</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">when</span>里可以有一个或者多个deferred对象</div><div class="line"></div><div class="line"><span class="comment">## 给普通函数添加deferred功能</span></div></pre></td></tr></table></figure>javascript<br>var a  =function(){<br>    var dtd = $.Deferred();<br>    //….other code….//<br>    return dtd.promise() //这里用promise()，是为了让返回的deferred对象屏蔽其改变状态的方法。即不能使用reject和resolve。<br>}</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">## 最后</span></div><div class="line">在<span class="number">1.7</span>中，还有progress()的方法，就是在未完成和完成中间的状态。</div><div class="line">有的时候，为了方便，也有直接</div></pre></td></tr></table></figure>$.when().then(fna,fnb);````的写法，fna为完成状态的回调，fnb为未完成时的回调。</p>
+    	<p>在高于1.5.0的jQuery版本$.ajax()返回的是<strong> deferred </strong>对象，<strong> deferred </strong>有以下几个主要的方法。</p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">done(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>}) <span class="comment">//成功</span></div><div class="line">fail(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>}) <span class="comment">//失败</span></div><div class="line">reject() <span class="comment">//改变deferred状态为失败</span></div><div class="line">resolve() <span class="comment">//改变deferred状态为成功</span></div></pre></td></tr></table></figure><br>其中done和fail是链式的，可以同时给目标对象加上多个done或者resolve。执行顺序为添加顺序</p>
+<h2 id="$-when()">$.when()</h2>
+<p>当when里面的deferred对象都返回成功状态时才进行接下来的动作。</p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.when(deferredObj1,defrredObj2).done(...).fail()</div></pre></td></tr></table></figure><br>when里可以有一个或者多个deferred对象</p>
+<h2 id="给普通函数添加deferred功能">给普通函数添加deferred功能</h2>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a  =<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span></div><div class="line">    <span class="keyword">var</span> dtd = $.Deferred();</div><div class="line">    <span class="comment">//....other code....//</span></div><div class="line">    <span class="keyword">return</span> dtd.promise() <span class="comment">//这里用promise()，是为了让返回的deferred对象屏蔽其改变状态的方法。即不能使用reject和resolve。</span></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h2 id="最后">最后</h2>
+<p>在1.7中，还有progress()的方法，就是在未完成和完成中间的状态。<br>有的时候，为了方便，也有直接<strong> $.when().then(fna,fnb);</strong>的写法，fna为完成状态的回调，fnb为未完成时的回调。</p>
 
     
 	</div>
